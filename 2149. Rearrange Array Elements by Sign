@@ -1,0 +1,29 @@
+// link : https://leetcode.com/problems/rearrange-array-elements-by-sign/description/
+
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        ArrayList<Integer> pos = new ArrayList<>();
+        ArrayList<Integer> neg = new ArrayList<>();
+
+        for(int ele : nums) {
+            if(ele >= 0) pos.add(ele);
+            else neg.add(ele);
+        }
+
+        int p = 0 , q = 0;
+
+        for(int i=0; i<nums.length; i++) {
+            if(i % 2 == 0) {
+                nums[i] = pos.get(p);
+                p++; 
+            }
+            else {
+                nums[i] = neg.get(q);
+                q++;
+            }
+        }
+
+        return nums;
+
+    }
+}
